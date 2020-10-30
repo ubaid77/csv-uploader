@@ -1,7 +1,7 @@
 const csv = require("fast-csv");
 const fs = require("fs");
 
-const Invoices = require("../models/Invoice");
+const Invoices = require("./models/Invoice");
 
 const messages = [];
 
@@ -30,7 +30,7 @@ function isFutureDate(idate) {
 
 //@desc upload csv data to database
 exports.uploadInvoices = (req, res, next) => {
-  const csvfile = __dirname + "../client/public/invoices/invoice.csv";
+  const csvfile = __dirname + "/client/public/invoices/invoice.csv";
   const stream = fs.createReadStream(csvfile);
   let invoices = [];
   let csvStream = csv

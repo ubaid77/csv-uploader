@@ -9,7 +9,7 @@ dotenv.config({ path: "./config/config.env" });
 connetDB();
 
 const invoices = require("./routes/invoice");
-const fileUpload = require("./routes/fileUpload");
+const fileUpload = require("./fileUpload");
 
 const app = express();
 
