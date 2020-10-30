@@ -14,7 +14,9 @@ function InvoiceUploadOption({ uploadedFileName }) {
 
   const onClick = async () => {
     try {
-      const response = await axios.get("/api/invoices/import");
+      const response = await axios.get(
+        "https://quiet-bastion-15558.herokuapp.com/api/invoices/import"
+      );
       console.log(response.data.validInvoices);
 
       setTitle("Success");

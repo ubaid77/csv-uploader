@@ -21,21 +21,25 @@ function FileUpload() {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const res = await axios.post("/api/file/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        },
-        onUploadProgress: (progressEvent) => {
-          setUploadPercentage(
-            parseInt(
-              Math.round(progressEvent.loaded * 100) / progressEvent.total
-            )
-          );
-          setTimeout(() => setUploadPercentage(0), 2000);
-        }
+      const res = await axios.post(
+        "https://quiet-bastion-15558.herokuapp.com/api/file/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+          onUploadProgress: (progressEvent) => {
+            setUploadPercentage(
+              parseInt(
+                Math.round(progressEvent.loaded * 100) / progressEvent.total
+              )
+            );
+            setTimeout(() => setUploadPercentage(0), 2000);
+          }
 
-        //clear percentage
-      });
+          //clear percentage
+        }
+      );
       const { fileName, filePath } = res.data;
 
       setUploadedFile({ fileName, filePath });
