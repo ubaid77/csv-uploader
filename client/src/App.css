@@ -1,0 +1,11 @@
+.container {
+  max-width: 600px;
+}
+span {
+  font-size: 1.7rem;
+}
+.data {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
