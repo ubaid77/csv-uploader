@@ -15,6 +15,7 @@ function Modal({
       const response = await axios.get(
         "https://quiet-bastion-15558.herokuapp.com/api/invoices/view-data"
       );
+      console.log("Data On Cloud -- ");
       console.log(response.data);
 
       alert("check console");
