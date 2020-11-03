@@ -11,13 +11,13 @@ function InvoiceUploadOption({ uploadedFileName }) {
   const [totalInvoices, setTotalInvoices] = useState(0);
   const [totalSumOfInvoices, setTotalSumOfInvoices] = useState(0);
   const [totalInvalidInvoices, setTotalInvalidInvoices] = useState(0);
+  const [totalVendors, setTotalVendors] = useState([]);
 
   const onClick = async () => {
     try {
       const response = await axios.get(
         "https://quiet-bastion-15558.herokuapp.com/api/invoices/import"
       );
-      console.log(response.data.validInvoices);
 
       setTitle("Success");
 
@@ -31,20 +31,22 @@ function InvoiceUploadOption({ uploadedFileName }) {
     } catch (error) {
       setTitle("Something went wrong");
       setErrors(error.response.data.error[0].error);
-      console.log(errors);
+
       setLoading(false);
     }
   };
 
   const processData = (entry) => {
-    console.log(entry);
+    var lookup = {};
     if (entry.length > 0) {
       entry.forEach((invoice) => {
         setTotalSumOfInvoices(
           totalSumOfInvoices + parseInt(invoice.amtInLocCur)
         );
-        console.log(parseInt(invoice.amtInLocCur));
-        console.log(totalSumOfInvoices);
+        if (!(invoice.vendorName in lookup)) {
+          lookup[invoice.vendorName] = 1;
+          setTotalVendors([...totalVendors, invoice.vendorName]);
+        }
       });
     }
   };
@@ -81,6 +83,7 @@ function InvoiceUploadOption({ uploadedFileName }) {
                 totalSum={totalSumOfInvoices}
                 totalValidInvoices={totalInvoices}
                 totalInvalidInvoices={totalInvalidInvoices}
+                totalVendors={totalVendors}
                 error={errors}
               />
             )}

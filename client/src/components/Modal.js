@@ -6,6 +6,7 @@ function Modal({
   totalSum,
   totalValidInvoices,
   totalInvalidInvoices,
+  totalVendors,
   error,
   loading
 }) {
@@ -56,6 +57,10 @@ function Modal({
               <div className="data">
                 <strong>No. of Invalid Invoices: </strong>
                 <span style={{ color: "#C82333" }}>{totalInvalidInvoices}</span>
+              </div>
+              <div className="data">
+                <strong>Total no. of vendors: </strong>
+                <span style={{ color: "#C82333" }}>{totalVendors}</span>
               </div>
 
               <div className="data">
