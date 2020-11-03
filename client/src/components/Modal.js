@@ -16,6 +16,7 @@ function Modal({
         "https://quiet-bastion-15558.herokuapp.com/api/invoices/view-data"
       );
       console.log(response.data);
+      console.log(totalVendors);
       alert("check console");
     } catch (error) {
       console.log(error);
