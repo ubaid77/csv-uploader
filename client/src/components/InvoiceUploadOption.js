@@ -37,7 +37,8 @@ function InvoiceUploadOption({ uploadedFileName }) {
   };
 
   const processData = (entry) => {
-    var lookup = {};
+    let lookup = {};
+    let result = [];
     if (entry.length > 0) {
       entry.forEach((invoice) => {
         setTotalSumOfInvoices(
@@ -45,9 +46,10 @@ function InvoiceUploadOption({ uploadedFileName }) {
         );
         if (!(invoice.vendorName in lookup)) {
           lookup[invoice.vendorName] = 1;
-          setTotalVendors([...totalVendors, invoice.vendorName]);
+          result.push(invoice.vendorName);
         }
       });
+      setTotalVendors(result);
     }
   };
   return (
