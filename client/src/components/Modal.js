@@ -75,7 +75,12 @@ function Modal({
         >
           Close
         </button>
-        <button onClick={onClick} type="button" className="btn btn-primary">
+        <button
+          data-dismiss="modal"
+          onClick={onClick}
+          type="button"
+          className="btn btn-primary"
+        >
           View Data
         </button>
       </div>
