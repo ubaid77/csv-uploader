@@ -16,7 +16,7 @@ function Modal({
         "https://quiet-bastion-15558.herokuapp.com/api/invoices/view-data"
       );
       console.log(response.data);
-      console.log(totalVendors);
+
       alert("check console");
     } catch (error) {
       console.log(error);
@@ -61,7 +61,11 @@ function Modal({
               </div>
               <div className="data">
                 <strong>Total no. of vendors: </strong>
-                <span style={{ color: "#C82333" }}>{totalVendors}</span>
+                <ul>
+                  {totalVendors.map((vendors) => (
+                    <li style={{ color: "#E0A800" }}>{vendors}</li>
+                  ))}
+                </ul>
               </div>
 
               <div className="data">
