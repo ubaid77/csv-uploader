@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import loader from "../Loader/loader.svg";
 function Modal({
   title,
@@ -8,6 +9,17 @@ function Modal({
   error,
   loading
 }) {
+  const onClick = async () => {
+    try {
+      const response = await axios.get(
+        "https://quiet-bastion-15558.herokuapp.com/api/invoices/view-data"
+      );
+      console.log(response.data);
+      alert("check console");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div className="modal-header">
@@ -63,11 +75,9 @@ function Modal({
         >
           Close
         </button>
-        {/* <a href="/invoices/view-data" target="_blank">
-          <button type="button" className="btn btn-primary">
-            View Data
-          </button>
-        </a> */}
+        <button onClick={onClick} type="button" className="btn btn-primary">
+          View Data
+        </button>
       </div>
     </>
   );
