@@ -11,7 +11,7 @@ router.post("/upload", (req, res) => {
   if (path.extname(file.name) != ".csv") {
     return res.status(400).json({ message: "Only CSV files supported!" });
   }
-  file.mv(`${__dirname}/client/public/invoices/invoice.csv`, (err) => {
+  file.mv(`${__dirname}/../client/public/invoices/invoice.csv`, (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send(err);
